@@ -125,6 +125,11 @@ cd..() {
     cd ..
 }
 
+up() {
+    cd "$(printf '../%.0s' {1..${1:-1}})"
+}
+
+
 rm() {
     local arg has_flags=0 dirs=()
 
