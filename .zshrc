@@ -128,7 +128,7 @@ alias ll="eza -la --icons=always --git"
 alias cd="z"
 alias mkcd="take"
 alias cat="bat --paging=never"
-alias grep="rg"
+alias grep="rg -n"
 alias find="fd"
 
 alias zshrc="${EDITOR:-nvim} ~/.zshrc"
