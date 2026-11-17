@@ -110,19 +110,20 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# ----------- ALIASES --------------
 alias ls="eza --icons=always"
 alias mkcd="take"
 
+
+# ----------- Keybindings -----------
+bindkey "^[b" backward-word
+bindkey "^[f" forward-word
+
+
+# -------- cmd functions -----------
 cd..() {
     cd ..
 }
-
-cddev() {
-    cd ~/Documents/Development/
-}
-
-bindkey "^[b" backward-word
-bindkey "^[f" forward-word
 
 rm() {
     local arg has_flags=0 dirs=()
@@ -165,6 +166,7 @@ rm() {
     fi
 
 }
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
