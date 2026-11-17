@@ -137,6 +137,12 @@ up() {
     cd "$(printf '../%.0s' {1..${1:-1}})"
 }
 
+# bak()
+#
+# Makes a quick .bak backup copy of a file
+bak() {
+    cp -- "$1" "$1.bak"
+}
 
 # killport()
 #
