@@ -113,7 +113,7 @@ source $ZSH/oh-my-zsh.sh
 # ----------- ALIASES --------------
 alias ls="eza --icons=always"
 alias mkcd="take"
-
+alias cd="z"
 
 # ----------- Keybindings -----------
 bindkey "^[b" backward-word
