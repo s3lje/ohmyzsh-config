@@ -121,15 +121,46 @@ bindkey "^[f" forward-word
 
 
 # -------- cmd functions -----------
+
+# cd..()
+#
+# similar to an alias, simply makes 'cd..' act as 'cd ..'
 cd..() {
     cd ..
 }
 
+
+# up()
+#
+# moves up folder hierarchy by 1 or X folders with (up | up X)
 up() {
     cd "$(printf '../%.0s' {1..${1:-1}})"
 }
 
 
+# killport()
+#
+# kills off whatever process is using a specified port
+killport() {
+    local pid
+    pid=$(lsof -ti tcp:"$1")
+    if [[ -n "$pid" ]]; then
+        kill "$pid"
+        echo "Killed $pid using port: $1"
+        return 0
+    else
+        "No service found on port $1"
+        return 1
+    fi
+}
+
+# rm()
+#
+# wrapper function for rm builtin.
+# checks whether rm was ran with flags or not, and if its ran without,
+# it checks if whats being deleted is a directory, if not, it simply 
+# deletes it. But if it is a directory it asks the user if they meant
+# to delete the directory and everything inside with a y|N prompt.
 rm() {
     local arg has_flags=0 dirs=()
 
