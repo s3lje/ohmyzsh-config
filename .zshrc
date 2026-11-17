@@ -157,12 +157,50 @@ up() {
     cd "$(printf '../%.0s' {1..${1:-1}})"
 }
 
+
+# proj()
+#
+# fuzzy-picks any subfolder of the Development folder in Documents
+# with a preview
+proj() {
+    local dir
+    dir=$(fd --type d --max-depth 2 . ~/Documents/Development |
+        fzf --preview 'eza -la --icons=always {}') && cd "$dir"
+}
+
+
+# gbr()
+#
+# git branch picker, sorted by most recent commit, with log preview
+gbr(){
+    local branch
+    branch=$(git branch --all --sort=-committerdate |
+        sed 's/^[* ]*//; s#remotes/origin/##' |
+        awk '!seen[$0]++' | grep -v HEAD |
+        fzf --preview 'git log --oneline --color=always -20 {}') &&
+        git checkout "$branch"
+}
+
+
 # bak()
 #
 # Makes a quick .bak backup copy of a file
 bak() {
     cp -- "$1" "$1.bak"
 }
+
+
+# fkill()
+#
+# lets the user pick one or more processes with tab,
+# and then press enter to kill them.
+fkill() {
+    local pids
+    pids=$(ps -eo pid,user,%cpu,%mem,comm | sed 1d |
+        fzf -m --header 'Tab to multi-select' | awk '{print $1}')
+    [[ -n "$pids" ]] && echo "$pids" | xargs kill
+}
+
 
 # killport()
 #
