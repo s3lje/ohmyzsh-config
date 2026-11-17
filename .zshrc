@@ -190,6 +190,15 @@ bak() {
 }
 
 
+# ts()
+#
+# ts attaches to a session named after currect directory, if one Documents
+# exist, it creates it. ${PWD:t} is last path compontent
+ts() {
+    tmux new-session -A -s "${1:-${PWD:t}}"
+}
+
+
 # fkill()
 #
 # lets the user pick one or more processes with tab,
