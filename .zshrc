@@ -112,8 +112,16 @@ source $ZSH/oh-my-zsh.sh
 
 # ----------- ALIASES --------------
 alias ls="eza --icons=always"
-alias mkcd="take"
+alias ll="eza -la --icons=always --git"
 alias cd="z"
+alias mkcd="take"
+alias cat="bat --paging=never"
+alias grep="rg"
+alias find="fd"
+
+alias zshrc="${EDITOR:-nvim} ~/.zshrc"
+alias reload='source ~/.zshrc'
+
 
 # ----------- Keybindings -----------
 bindkey "^[b" backward-word
