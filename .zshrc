@@ -110,6 +110,18 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# ----------- SHELL VARS ------------
+HISTSIZE=50000
+SAVEHIST=50000
+
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE    # cmds starting with space dont get saved
+setopt SHARE_HISTORY        # save history across tabs
+
+setopt AUTO_CD              # typing a dir name alone cds into it
+setopt CORRECT              # offers corrections for mistyped cmds
+
+
 # ----------- ALIASES --------------
 alias ls="eza --icons=always"
 alias ll="eza -la --icons=always --git"
