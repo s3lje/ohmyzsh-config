@@ -169,10 +169,10 @@ proj() {
 }
 
 
-# gbr()
+# gitbr()
 #
 # git branch picker, sorted by most recent commit, with log preview
-gbr(){
+gitbr() {
     local branch
     branch=$(git branch --all --sort=-committerdate |
         sed 's/^[* ]*//; s#remotes/origin/##' |
